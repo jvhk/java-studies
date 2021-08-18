@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import entities.Circle;
@@ -9,23 +10,27 @@ import entities.Shape;
 
 public class Program {
 	public static void main(String[] args) {
+		List<Integer> myInts = Arrays.asList(1,2,3,4);
+		List<Double> myDoubles = Arrays.asList(3.14, 6.28);
+		List<Object> myObjects = new ArrayList<>();
 		
-		List<Shape> list = new ArrayList<>();
-		list.add(new Rectangle(3.0, 2.0));
-		list.add(new Circle(2.0));
-		
-		List<Circle> myCircles = new ArrayList<>();
-		myCircles.add(new Circle(2.0));
-		myCircles.add(new Circle(3.0));
-		
-		System.out.println("Total area: " + totalArea(list));
+		copy(myInts, myObjects);
+		printList(myObjects);
+		copy(myDoubles, myObjects);
+		printList(myObjects);
 	}
 
-	private static double totalArea(List<? extends Shape> list) {	//aceita listas de Shape ou de qualquer subtipo de shape
-		double sum = 0.0;
-		for(Shape s : list) {
-			sum += s.area();
+	private static void copy(List<? extends Number> source, List<? super Number> destiny) {
+		for(Number number : source) {
+			destiny.add(number);
 		}
-		return sum;
 	}
+	
+	public static void printList(List<?> list) {
+		for(Object obj : list) {
+			System.out.print(obj + " ");
+		}
+		System.out.println();
+	}
+
 }
