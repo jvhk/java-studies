@@ -17,9 +17,8 @@ public class Program {
 		
 		double min = 100.0;
 		
-		Predicate<Product> pred = p -> p.getPrice() >= min;
 		
-		list.removeIf(Product::nonStaticProductPredicate);
+		list.removeIf(p -> p.getPrice() >= min);
 		
 		for(Product p: list) {
 			System.out.println(p);
