@@ -17,7 +17,7 @@ public class Program {
 		list.add(new Product("HD", 80.90));
 
 		//map function
-		List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
+		List<String> names = list.stream().map(Product::nonStaticUpperCaseName).collect(Collectors.toList());
 		
 		names.forEach(System.out::println);
 		
